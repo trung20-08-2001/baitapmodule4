@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit account</h2>
+    <form action="/edit" method="post" th:object="${account}">
+        <div class="form-group">
+            <input type="text" required class="form-control" placeholder="Enter email" th:field="*{id}" hidden="hidden">
+        </div>
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" required class="form-control" placeholder="Enter username" th:field="*{username}">
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="text" required class="form-control" placeholder="Enter password" th:field="*{password}">
+        </div>
+        <div class="form-group">
+            <label>Avatar:</label>
+            <input type="text" required class="form-control" placeholder="Enter avatar" th:field="*{avatar}">
+        </div>
+        <div class="form-group">
+            <label>Birthday:</label>
+            <input type="date" required class="form-control" placeholder="Enter birthday" th:field="*{birthday}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

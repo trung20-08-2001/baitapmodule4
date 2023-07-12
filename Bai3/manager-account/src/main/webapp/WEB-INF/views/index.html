@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>List account</h2>
+    <a class="btn btn-success" href="/create">Create</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Birthday</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Avatar</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="a : ${accounts}">
+            <td th:text="${a.getId()}"></td>
+            <td th:text="${a.getBirthday()}"></td>
+            <td th:text="${a.getUsername()}"></td>
+            <td th:text="${a.getPassword()}"></td>
+            <td><img th:src="${a.getAvatar()}" alt="Load..." width="150" height="150"></td>
+            <td><a th:href="@{/edit(id=${a.getId()})}">Edit</a></td>
+            <td><a th:href="@{/delete(id=${a.getId()})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

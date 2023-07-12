@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Customers</h3>
+<a th:href="@{/customer/create}">Add new customer</a>
+<table id="customers" style="text-align: center">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    <tr th:each="c : ${customers}">
+        <td th:text="${c.getName()}"></td>
+        <td th:text="${c.getEmail()}"></td>
+        <td th:text="${c.getAddress()}"></td>
+        <td><a th:href="@{/customer/edit/{id} (id=${c.getId()})}">Edit</a></td>
+        <td><a th:href="@{/customer/delete/{id} (id=${c.getId()})}">Delete</a></td>
+        <td><a th:href="@{/customer/view/{id} (id=${c.getId()})}">View</a></td>
+    </tr>
+</table>
+<footer th:replace="/layout::footer"></footer>
+</body>
+</html>
