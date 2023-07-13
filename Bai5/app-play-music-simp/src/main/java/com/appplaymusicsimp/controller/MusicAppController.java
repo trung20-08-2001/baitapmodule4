@@ -54,7 +54,7 @@ public class MusicAppController {
             model.addAttribute("song",song);
             return "/create";
         }else{
-            musicAppService.edit(song);
+            musicAppService.edit(song,fileSong);
             return "redirect:/";
         }
     }

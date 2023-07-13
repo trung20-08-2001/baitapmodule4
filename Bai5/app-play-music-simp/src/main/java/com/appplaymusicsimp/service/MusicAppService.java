@@ -34,7 +34,9 @@ public class MusicAppService {
         songDAO.save(song);
     }
 
-    public void edit(Song song){
+    public void edit(Song song,MultipartFile music){
+        String name=music.getOriginalFilename();
+        song.setNameFile(name);
         songDAO.edit(song);
     }
 
