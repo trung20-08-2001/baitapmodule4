@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2 style="text-align: center">ADMIN</h2>
+    <h1 style="text-align: center">Thông tin của bạn</h1>
+    <table class="table table-bordered" th:object="${account}">
+        <thead>
+        <tr>
+            <th colspan="2" style="text-align: center"><img th:src="*{avatar}" width="200" height="200"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Username</td>
+            <td th:text="*{username}"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td th:text="*{password}"></td>
+        </tr>
+        <tr>
+            <td>Birthday</td>
+            <td th:text="*{birthday}"></td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td th:text="*{role.getName()}"></td>
+        </tr>
+        </tbody>
+        <td colspan="2" style="text-align: center">
+            <a type="button" class="btn btn-primary"
+               th:href="@{/all_account(idAdmin=${account.id})}">Xem tất cả tài khoản</a>
+        </td>
+    </table>
+    <div th:if="${accounts.size()>0}">
+        <table class="table table-bordered" >
+            <tr>
+<!--                <th>Id</th>-->
+                <th>Username</th>
+                <th>Password</th>
+                <th>Birthday</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr th:each=" a : ${accounts}">
+<!--                <td th:text:="${a.id}"></td>-->
+                <td th:text="${a.username}"></td>
+                <td th:text="${a.password}"></td>
+                <td th:text="${a.birthday}"></td>
+                <td th:text="${a.role.getName()}"></td>
+                <div th:if="${a.status==false}">
+                    <td>Block</td>
+                    <td th:href="@{/active(idUser=${a.id})}"><a>Active</a></td>
+                </div>
+                <div th:if="${a.status==true}">
+                    <td>Active</td>
+                    <td><a th:href="@{/block(idUser=${a.id})(idAdmin=${account.id}) }">Block</a></td>
+                </div>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

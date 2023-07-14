@@ -1,6 +1,5 @@
-package com.example.blog.filter;
+package com.login.filter;
 
-import com.example.blog.model.Post;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @WebFilter("/*")
 public class Utf_8Filter extends HttpFilter {

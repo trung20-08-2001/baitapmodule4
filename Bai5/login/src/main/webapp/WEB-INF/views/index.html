@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<!--<div th:if="${message!=null}">-->
+<!--    <h1 style="color: red"  th:text="${message}"></h1>-->
+<!--</div>-->
+<div class="cotn_principal">
+    <div class="cont_centrar">
+        <div class="cont_login">
+            <div class="cont_info_log_sign_up">
+                <div class="col_md_login">
+                    <!--                    <div class="cont_ba_opcitiy">-->
+                    <!--                        <h2>LOGIN</h2>-->
+                    <button class="btn_login" style="margin-top: 130px;" onclick="change_to_login()">LOGIN</button>
+                    <!--                    </div>-->
+                </div>
+                <div class="col_md_sign_up">
+                    <!--                    <div class="cont_ba_opcitiy">-->
+                    <!--                        <h2>SIGN UP</h2>-->
+                    <button class="btn_sign_up" onclick="change_to_sign_up()" style="margin-top: 130px;">SIGN UP</button><br>
+                    <h2 style="color: green" th:text="${message}"></h2>
+                    <!--                    </div>-->
+                </div>
+            </div>
+
+            <div class="cont_back_info">
+                <div class="cont_img_back_grey">
+                    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d"
+                         alt=""/>
+                </div>
+            </div>
+
+            <div class="cont_forms">
+                <div class="cont_img_back_">
+                    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d"
+                         alt=""/>
+                </div>
+                <form action="/login" method="post">
+                    <div class="cont_form_login">
+                        <a href="#" onclick="hidden_login_and_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                        <h2>LOGIN</h2>
+                        <input type="text" placeholder="Username" name="username" class="input" required/>
+                        <input type="password" placeholder="Password" name="password" class="input" required/>
+                        <button class="btn_login" type="submit">LOGIN</button>
+                    </div>
+                </form>
+                <form action="/register" method="post" enctype="multipart/form-data" th:object="${account}">
+                    <div class="cont_form_sign_up">
+                        <a href="#" onclick="hidden_login_and_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                        <h2>SIGN UP</h2>
+                        <input type="text" placeholder="Username" th:field="*{username}" required class="input"/>
+                        <input type="date" placeholder="Birthday" th:field="*{birthday}" required class="input"/>
+                        <input type="password" placeholder="Password" th:field="*{password}" required class="input"/>
+                        <input hidden="hidden" th:field="*{status}"/>
+                        <input hidden="hidden" name="idRole" value="2">
+                        <span>Choose avatar</span>
+                        <input type="file" name="imageFile" required style="margin-top: 0px; margin-left: 0px;">
+                        <button class="btn_sign_up" type="submit">SIGN UP</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../js/js.js"></script>
